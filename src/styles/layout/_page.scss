@@ -1,0 +1,11 @@
+@use "../core/variables";
+
+.page {
+    font-family: 'Arial', sans-serif;
+    background-color: variables.$background-light;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+}

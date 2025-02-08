@@ -1,0 +1,29 @@
+@use "../core/variables";
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.filter {
+
+    &__input,
+    &__select {
+        padding: variables.$padding-base;
+        border: 2px solid variables.$primary-color;
+        border-radius: variables.$border-radius;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 250px;
+        transition: variables.$transition-fast;
+        color: variables.$text-color;
+
+        &:focus {
+            outline: none;
+            border-color: variables.$secondary-color;
+            box-shadow: 0 0 5px rgba(variables.$secondary-color, 0.5);
+        }
+    }
+}

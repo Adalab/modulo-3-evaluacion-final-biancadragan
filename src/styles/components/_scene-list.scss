@@ -1,0 +1,21 @@
+@use "../core/variables";
+
+.scene {
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+        width: 100%;
+        max-width: 1200px;
+        padding: 1rem;
+        list-style: none;
+
+        @media (max-width: variables.$breakpoint-lg) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: variables.$breakpoint-md) {
+            grid-template-columns: 1fr;
+        }
+    }
+}
