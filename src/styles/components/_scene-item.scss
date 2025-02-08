@@ -14,6 +14,10 @@
         }
     }
 
+    &__link {
+        text-decoration: none;
+    }
+
     &__info {
         display: flex;
         flex-direction: column;
