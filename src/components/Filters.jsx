@@ -1,8 +1,12 @@
 import PropTypes from "prop-types";
 
 function Filters({ filterMovie, filterYear, onFilterMovie, onFilterYear, uniqueYears }) {
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+  };
+
   return (
-    <form className="filters">
+    <form className="filters" onSubmit={handleSubmit}>
       <input
         id="filterMovie"
         className="filter__input"
@@ -24,6 +28,8 @@ function Filters({ filterMovie, filterYear, onFilterMovie, onFilterYear, uniqueY
   );
 }
 
+export default Filters;
+
 Filters.propTypes = {
   filterMovie: PropTypes.string.isRequired,
   filterYear: PropTypes.string.isRequired,
@@ -31,5 +37,3 @@ Filters.propTypes = {
   onFilterYear: PropTypes.func.isRequired,
   uniqueYears: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
-
-export default Filters;
