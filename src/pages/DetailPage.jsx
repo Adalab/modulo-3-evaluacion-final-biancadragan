@@ -5,10 +5,7 @@ import "../styles/components/_detail-page.scss";
 function DetailPage({ scenes }) {
     const { id } = useParams();
 
-    const scene = scenes.find((scene) => {
-        const generatedId = `${scene.movie.replace(/\s+/g, "-")}-${scene.year}-${scene.timestamp}`;
-        return generatedId === id;
-    });
+    const scene = scenes.find((scene) => scene.generatedId === id);
 
     if (!scene) return <p>Scene not found</p>;
 

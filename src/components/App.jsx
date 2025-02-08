@@ -4,30 +4,21 @@ import Header from "./Header.jsx";
 import LandingPage from "../pages/LandingPage.jsx";
 import DetailPage from "../pages/DetailPage.jsx";
 import "../styles/main.scss";
+import { useFetchScenes } from "../lib/hooks";
 
 function App() {
-  const [scenes, setScenes] = useState([]);
-
-  useEffect(() => {
-    fetch("https://owen-wilson-wow-api.onrender.com/wows/random?results=50")
-      .then((response) => response.json())
-      .then((data) => {
-        const updatedScenes = data.map((scene) => ({
-          ...scene,
-          generatedId: `${scene.movie.replace(/\s+/g, "-")}-${scene.year}-${scene.timestamp}`,
-        }));
-        setScenes(updatedScenes);
-      });
-  }, []);
+  const { scenes } = useFetchScenes();  // Solo obtenemos scenes
 
   return (
     <div className="page">
-      <Header title="Owen Wilson's WoW" />
+      <header className="header">
+        <h1 className="header__title">Owen Wilson's WoW</h1>
+      </header>
       <main>
         <Routes>
           <Route index element={<LandingPage scenes={scenes} />} />
           <Route path="detail/:id" element={<DetailPage scenes={scenes} />} />
-          <Route path="*" element={<p>Error 404: Page Not Found</p>} />
+          <Route path="*" element={<p>Error 404: Page not found</p>} />
         </Routes>
       </main>
     </div>
@@ -35,6 +26,3 @@ function App() {
 }
 
 export default App;
-
-
-
