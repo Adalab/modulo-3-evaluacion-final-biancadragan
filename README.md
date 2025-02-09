@@ -2,6 +2,10 @@
 
 This React application fetches and displays random scenes from the [Owen Wilson WoW API](https://owen-wilson-wow-api.onrender.com). Users can view a list of scenes, filter them by movie and year, and click on a scene to see its detailed information.
 
+## Live Demo
+
+You can check out the live version of the project here: [Owen Wilson's WoW - Live Demo](https://beta.adalab.es/modulo-3-evaluacion-final-biancadragan/).
+
 ## Table of Contents
 
 - [Features](#features)
