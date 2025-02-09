@@ -7,6 +7,17 @@
     margin-bottom: 1rem;
 }
 
+.filters__group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    @media (max-width: variables.$breakpoint-md) {
+        flex-direction: column; 
+        align-items: stretch; 
+    }
+}
+
 .filter {
 
     &__input,
@@ -24,6 +35,30 @@
             outline: none;
             border-color: variables.$secondary-color;
             box-shadow: 0 0 5px rgba(variables.$secondary-color, 0.5);
+        }
+    }
+
+
+    &__clear-button {
+        padding: 0.3rem 1rem;
+        background-color: variables.$primary-color;
+        color: white;
+        border: none;
+        border-radius: variables.$border-radius;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: variables.$transition-fast;
+
+        margin: 0;
+        display: inline-block;
+
+        &:hover {
+            background-color: variables.$secondary-color;
+        }
+
+        &:active {
+            transform: scale(0.98);
         }
     }
 }

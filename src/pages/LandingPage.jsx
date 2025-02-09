@@ -19,6 +19,11 @@ function LandingPage({ scenes }) {
   const handleFilterMovie = (ev) => setFilterMovie(ev.target.value);
   const handleFilterYear = (ev) => setFilterYear(ev.target.value);
 
+  const handleClearFilters = () => {
+    setFilterMovie("");
+    setFilterYear("");
+  };
+
   const allYears = scenes.map((scene) => scene.year);
   const uniqueYears = [...new Set(allYears)].sort((a, b) => a - b);
 
@@ -36,6 +41,7 @@ function LandingPage({ scenes }) {
         onFilterMovie={handleFilterMovie}
         onFilterYear={handleFilterYear}
         uniqueYears={uniqueYears}
+        onClearFilters={handleClearFilters}
       />
       {filteredScenes.length > 0 ? (
         <SceneList scenes={filteredScenes} />
