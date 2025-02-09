@@ -5,9 +5,29 @@ import "../styles/components/_detail-page.scss";
 function DetailPage({ scenes }) {
     const { id } = useParams();
 
-    const scene = scenes.find((scene) => scene.generatedId === id);
+    // Buscar la escena en el estado global
+    let scene = scenes.find((scene) => scene.generatedId === id);
 
-    if (!scene) return <p>Scene not found</p>;
+    // Si no está en el estado, buscar en localStorage
+    if (!scene) {
+        const storedScenes = JSON.parse(localStorage.getItem("scenes")) || [];
+        scene = storedScenes.find((scene) => scene.generatedId === id);
+    }
+
+    // Si sigue sin encontrarse, mostrar un mensaje 
+    if (!scene) {
+        return (
+            <div className="scene-detail">
+                <header className="scene-detail__header">
+                    <h1 className="scene-detail__header-title">Error</h1>
+                    <Link to="/" className="scene-detail__back-link">← Back to List</Link>
+                </header>
+                <main className="scene-detail__content">
+                    <p className="scene-detail__error"> The scene you are looking for does not exist.</p>
+                </main>
+            </div>
+        );
+    }
 
     return (
         <div className="scene-detail">
@@ -32,4 +52,5 @@ DetailPage.propTypes = {
 };
 
 export default DetailPage;
+
 
