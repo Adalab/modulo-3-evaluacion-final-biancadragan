@@ -12,10 +12,13 @@ function useFetchScenes() {
       fetch("https://owen-wilson-wow-api.onrender.com/wows/random?results=50")
         .then((response) => response.json())
         .then((data) => {
-          const updatedScenes = data.map((scene) => ({
-            ...scene,
-            generatedId: generateSceneId(scene),
-          }));
+          const updatedScenes = data
+            .map((scene) => ({
+              ...scene,
+              generatedId: generateSceneId(scene),
+            }))
+            .sort((a, b) => a.movie.localeCompare(b.movie)); // Ordenamos por nombre de película
+
           localStorage.setItem("scenes", JSON.stringify(updatedScenes));
           setScenes(updatedScenes);
         });
@@ -26,3 +29,4 @@ function useFetchScenes() {
 }
 
 export { useFetchScenes };
+

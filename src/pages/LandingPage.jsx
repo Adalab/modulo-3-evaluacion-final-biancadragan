@@ -27,11 +27,16 @@ function LandingPage({ scenes }) {
   const allYears = scenes.map((scene) => scene.year);
   const uniqueYears = [...new Set(allYears)].sort((a, b) => a - b);
 
-  const filteredScenes = scenes.filter(
-    (scene) =>
-      scene.movie.toLowerCase().includes(filterMovie.toLowerCase()) &&
-      (filterYear ? scene.year === parseInt(filterYear) : true)
-  );
+  // Ordenamos escenas alfabéticamente por el nombre de la película
+const sortedScenes = [...scenes].sort((a, b) => a.movie.localeCompare(b.movie));
+
+// Filtramos las escenas ordenadas
+const filteredScenes = sortedScenes.filter(
+  (scene) =>
+    scene.movie.toLowerCase().includes(filterMovie.toLowerCase()) &&
+    (filterYear ? scene.year === parseInt(filterYear) : true)
+);
+
 
   return (
     <div>
@@ -46,10 +51,10 @@ function LandingPage({ scenes }) {
       {filteredScenes.length > 0 ? (
         <SceneList scenes={filteredScenes} />
       ) : (
-        <NoResultsMessage 
-          scenes={scenes} 
-          filterMovie={filterMovie} 
-          filterYear={filterYear} 
+        <NoResultsMessage
+          scenes={scenes}
+          filterMovie={filterMovie}
+          filterYear={filterYear}
         />
       )}
     </div>
